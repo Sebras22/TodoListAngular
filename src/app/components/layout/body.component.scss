@@ -19,3 +19,83 @@ app-task-creation {
   right: 24px;
   z-index: 100;
 }
+
+.empty-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  min-height: 60vh;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  >div:first-child {
+    max-width: 34rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #7fbf9e;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4a5a52;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #8a9490;
+      line-height: 1.6;
+      margin: 0.5rem 0 0;
+    }
+  }
+
+  // Animation for the GitHub logo wrapper on hover, generated with AI
+  .github-logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5a52;
+    padding: 0.75rem;
+    border-radius: 50%;
+    background-color: rgba(127, 191, 158, 0.1);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    .github-icon {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: #7fbf9e;
+      background-color: rgba(127, 191, 158, 0.2);
+      transform: translateY(-4px);
+    }
+  }
+
+  //end
+
+  .instruction {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7fbf9e;
+  }
+
+  @media (max-width: 600px) {
+    padding: 2rem 1rem;
+    gap: 1.75rem;
+
+    >div:first-child h1 {
+      font-size: 1.75rem;
+    }
+  }
+}

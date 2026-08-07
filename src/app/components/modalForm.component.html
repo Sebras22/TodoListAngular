@@ -1,22 +1,22 @@
 <h2 mat-dialog-title>
-  {{ isBoard ? 'Nouveau tableau' : 'Nouvelle tâche' }}
+  {{ isBoard ? 'New Board' : 'New Task' }}
 </h2>
 
 <mat-dialog-content>
   <form [formGroup]="form" id="modalForm" (ngSubmit)="onSubmit()">
     <div class="form-field">
       <label for="title">
-        {{ isBoard ? 'Nom du tableau *' : 'Titre *' }}
+        {{ isBoard ? 'Board Name' : 'Task Title' }}
       </label>
       <input
         id="title"
         type="text"
         formControlName="title"
-        [placeholder]="isBoard ? 'Entrez le nom...' : 'Entrez le titre...'"
+        [placeholder]="isBoard ? 'Enter board name...' : 'Enter task title...'"
       />
       @if (form.controls.title.touched && form.controls.title.invalid) {
         <span class="error-text">
-          {{ isBoard ? 'Le nom' : 'Le titre' }} doit contenir au moins 3 caractères.
+          {{ isBoard ? 'The name' : 'The title' }} must contain at least 3 characters.
         </span>
       }
     </div>
@@ -28,7 +28,7 @@
           id="description"
           formControlName="description"
           rows="3"
-          placeholder="Détails optionnels..."
+          placeholder="Optional details..."
         ></textarea>
       </div>
     }
@@ -36,8 +36,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button type="button" class="btn-secondary" (click)="onCancel()">Annuler</button>
-  <button type="submit" form="modalForm" class="btn-primary" [disabled]="form.invalid">
-    Enregistrer
-  </button>
+  <button type="button" class="btn-secondary" (click)="onCancel()">Cancel</button>
+  <button type="submit" form="modalForm" class="btn-primary" [disabled]="form.invalid">Save</button>
 </mat-dialog-actions>

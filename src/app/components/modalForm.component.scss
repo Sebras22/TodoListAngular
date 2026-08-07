@@ -23,7 +23,7 @@ mat-dialog-content {
     outline: none;
 
     &:focus {
-      border-color: #3f51b5;
+      border-color: #7fbf9e;
     }
   }
 
@@ -46,14 +46,25 @@ mat-dialog-actions {
     &.btn-secondary {
       background: #e0e0e0;
       color: #333333;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background: #ff6565;
+        color: #ffffff;
+      }
     }
 
     &.btn-primary {
-      background: #3f51b5;
+      background: #7fbf9e75;
       color: #ffffff;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background: #7fbf9e;
+      }
 
       &:disabled {
-        background: #9fa8da;
+        background: #7fbf9e50;
         cursor: not-allowed;
       }
     }

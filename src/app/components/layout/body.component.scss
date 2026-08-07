@@ -1,0 +1,21 @@
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 32px;
+  grid-column: 1 / -1;
+}
+
+app-task-creation {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+}

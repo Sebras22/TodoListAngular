@@ -1,6 +1,12 @@
 <header>
   <h1>Mes tableaux</h1>
   <div>
+    @for (board of boards(); track board.id) {
+      <app-board [name]="board.name" [id]="board.id" (delete)="onDeleteBoard(board.id)" />
+    } @empty {
+      <p class="empty-state">Aucun tableau pour le moment.</p>
+    }
+    <app-board-creation />
     <button>Share this project</button>
     <button>Github Link</button>
   </div>

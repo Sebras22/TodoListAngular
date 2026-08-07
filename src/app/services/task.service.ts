@@ -10,6 +10,7 @@ export class TaskService {
   createTask(taskData: CreateTaskResult): Observable<Task> {
     const newTask: Task = {
       id: crypto.randomUUID(),
+      boardId: '',
       title: taskData.title,
       description: taskData.description,
       status: 'todo',

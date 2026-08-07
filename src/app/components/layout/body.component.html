@@ -1,15 +1,26 @@
-<div class="task-list">
-  @for (task of tasks(); track task.id) {
-    <app-task-card
-      [title]="task.title"
-      [description]="task.description || ''"
-      [status]="task.status"
-      [dueDate]="task.dueDate"
-      (statusChange)="onStatusChange(task.id, $event)"
-      (delete)="onDeleteTask(task.id)"
-    />
-  } @empty {
-    <p class="empty-state">Aucune tâche pour le moment.</p>
-  }
-  <app-task-creation (taskCreated)="onTaskCreated($event)" />
-</div>
+@if (currentBoard()) {
+  <h2>{{ currentBoard()?.name }}</h2>
+
+  <div class="task-list-container">
+    <div class="task-list">
+      @for (task of filteredTasks(); track task.id) {
+        <app-task-card
+          [title]="task.title"
+          [description]="task.description || ''"
+          [status]="task.status"
+          [dueDate]="task.dueDate"
+          (statusChange)="onStatusChange(task.id, $event)"
+          (delete)="onDeleteTask(task.id)"
+        />
+      } @empty {
+        <p class="empty-state">Aucune tâche pour ce tableau.</p>
+      }
+    </div>
+
+    <app-task-creation (taskCreated)="onTaskCreated($event)" />
+  </div>
+} @else {
+  <div class="empty-selection">
+    <p>Veuillez sélectionner ou créer un tableau dans le menu de gauche.</p>
+  </div>
+}

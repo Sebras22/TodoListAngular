@@ -1,30 +1,43 @@
-<h2 mat-dialog-title>Nouvelle tâche</h2>
+<h2 mat-dialog-title>
+  {{ isBoard ? 'Nouveau tableau' : 'Nouvelle tâche' }}
+</h2>
 
 <mat-dialog-content>
-  <form [formGroup]="taskForm" id="taskForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" id="modalForm" (ngSubmit)="onSubmit()">
     <div class="form-field">
-      <label for="title">Titre *</label>
-      <input id="title" type="text" formControlName="title" placeholder="Entrez le titre..." />
-      @if (taskForm.controls.title.touched && taskForm.controls.title.invalid) {
-        <span class="error-text">Le titre doit contenir au moins 3 caractères.</span>
+      <label for="title">
+        {{ isBoard ? 'Nom du tableau *' : 'Titre *' }}
+      </label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        [placeholder]="isBoard ? 'Entrez le nom...' : 'Entrez le titre...'"
+      />
+      @if (form.controls.title.touched && form.controls.title.invalid) {
+        <span class="error-text">
+          {{ isBoard ? 'Le nom' : 'Le titre' }} doit contenir au moins 3 caractères.
+        </span>
       }
     </div>
 
-    <div class="form-field">
-      <label for="description">Description</label>
-      <textarea
-        id="description"
-        formControlName="description"
-        rows="3"
-        placeholder="Détails optionnels..."
-      ></textarea>
-    </div>
+    @if (!isBoard) {
+      <div class="form-field">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="3"
+          placeholder="Détails optionnels..."
+        ></textarea>
+      </div>
+    }
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button type="button" class="btn-secondary" (click)="onCancel()">Annuler</button>
-  <button type="submit" form="taskForm" class="btn-primary" [disabled]="taskForm.invalid">
+  <button type="submit" form="modalForm" class="btn-primary" [disabled]="form.invalid">
     Enregistrer
   </button>
 </mat-dialog-actions>

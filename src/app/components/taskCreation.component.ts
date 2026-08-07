@@ -1,6 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ModalFormComponent } from './modalForm.component';
+// Importe les types créés dans le ModalFormComponent
+import { ModalFormComponent, ModalDialogData } from './modalForm.component';
 import { CreateTaskResult, Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
 
@@ -18,9 +19,12 @@ export class TaskCreationComponent {
   readonly taskCreated = output<Task>();
 
   openCreateTaskModal(): void {
-    const dialogRef = this.dialog.open<ModalFormComponent, any, CreateTaskResult>(
+    const dialogRef = this.dialog.open<ModalFormComponent, ModalDialogData, CreateTaskResult>(
       ModalFormComponent,
-      { width: '480px' },
+      {
+        width: '480px',
+        data: { type: 'task' },
+      },
     );
 
     dialogRef.afterClosed().subscribe((result) => {

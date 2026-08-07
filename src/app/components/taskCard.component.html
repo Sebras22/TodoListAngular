@@ -1,0 +1,35 @@
+<div class="task-card" (click)="onCardClick()">
+  <div class="task-card-header">
+    <button type="button" class="btn-delete" (click)="onDelete($event)" title="Supprimer">
+      &times;
+    </button>
+  </div>
+  <div class="task-card-body">
+    <h4 class="task-title">{{ title() }}</h4>
+    @if (description()) {
+      <p class="task-description">{{ description() }}</p>
+    }
+  </div>
+  <div class="task-card-custom">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="task-card-footer">
+    <select
+      class="status-select"
+      [value]="status()"
+      (change)="onStatusChange($event)"
+      (click)="$event.stopPropagation()"
+    >
+      <option value="todo">À faire</option>
+      <option value="in_progress">En cours</option>
+      <option value="done">Terminé</option>
+    </select>
+
+    <div class="task-meta">
+      @if (dueDate()) {
+        <span class="due-date"> 📅 {{ dueDate() | date: 'dd/MM/yyyy' }} </span>
+      }
+    </div>
+  </div>
+</div>

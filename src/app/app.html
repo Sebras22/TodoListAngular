@@ -1,2 +1,21 @@
-<app-header></app-header>
-<app-taskCreation></app-taskCreation>
+<app-header />
+
+<main class="container">
+  <app-task-creation (taskCreated)="onTaskCreated($event)" />
+  <div class="task-list">
+    @for (task of tasks(); track task.id) {
+      <app-task-card
+        [title]="task.title"
+        [description]="task.description || ''"
+        [status]="task.status"
+        [dueDate]="task.dueDate"
+        (statusChange)="onStatusChange(task.id, $event)"
+        (delete)="onDeleteTask(task.id)"
+      />
+    } @empty {
+      <p class="empty-state">Aucune tâche pour le moment.</p>
+    }
+  </div>
+
+  <router-outlet />
+</main>

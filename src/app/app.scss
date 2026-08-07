@@ -1,0 +1,19 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 32px;
+}

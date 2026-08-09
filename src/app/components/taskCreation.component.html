@@ -1,1 +1,24 @@
-<button class="btn-create-task" (click)="openCreateTaskModal()">+ Créer une tâche</button>
+<button
+  type="button"
+  class="btn-create-task"
+  (click)="openCreateTaskModal()"
+  title="Créer une tâche"
+>
+  <span class="btn-text">Create a task</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon-plus"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M12 5l0 14" />
+    <path d="M5 12l14 0" />
+  </svg>
+</button>

@@ -1,15 +1,58 @@
 .btn-create-task {
-  background-color: #3f51b5;
-  color: #ffffff;
-  border: none;
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 44px;
+  padding: 0 11px;
+  background-color: #ffffff;
+  color: #7fbf9e;
+  border: 2px solid #7fbf9e;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  outline: none;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(127, 191, 158, 0.15);
+
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  .btn-text {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: max-width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.25s ease,
+      margin-right 0.4s ease;
+  }
+
+  .icon-plus {
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 
   &:hover {
-    background-color: #303f9f;
+    background-color: #7fbf9e;
+    color: #ffffff;
+    padding: 0 16px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(127, 191, 158, 0.35);
+
+    .btn-text {
+      max-width: 140px;
+      /* Déplie la zone de texte */
+      opacity: 1;
+      margin-right: 8px;
+      /* Espacement avec le SVG */
+    }
+
+    .icon-plus {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* Clic tactile */
+  &:active {
+    transform: translateY(0) scale(0.96);
   }
 }

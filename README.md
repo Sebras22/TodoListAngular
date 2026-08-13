@@ -86,4 +86,4 @@ npm run serve:ssr:TodoList
 
 ## 📄 License
 
-No license specified yet. All rights reserved by the author unless stated otherwise.
+No licence, feel free to use this project as you wish.

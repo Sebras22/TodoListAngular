@@ -23,4 +23,20 @@ export class HeaderComponent {
   onDeleteBoard(boardId: string): void {
     this.boardService.deleteBoard(boardId);
   }
+
+  githubUrl = 'https://github.com/Sebras22/TodoListAngular';
+
+  copyGithubLink(): void {
+    navigator.clipboard
+      .writeText(this.githubUrl)
+      .then(() => {
+        console.log('Lien GitHub copié !');
+      })
+      .catch((err) => {
+        console.error('Erreur lors de la copie : ', err);
+      });
+  }
+  goToGithub(): void {
+    window.open(this.githubUrl, '_blank', 'noopener,noreferrer');
+  }
 }

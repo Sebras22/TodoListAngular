@@ -1,59 +1,89 @@
-# TodoList
+# TodoList — Angular Task Board
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+This project is a simple todolist app with board creation and task management, built with Angular 22 (standalone components, signals) and Angular Material. It supports server-side rendering (SSR) via Angular Universal / Express. It was made as a personal project to practice and learn modern Angular features and patterns, if you have any feedback please feel free to open an issue or PR !
 
-## Development server
+## 🛠️ Tech stack
 
-To start a local development server, run:
+- [Angular](https://angular.dev/) 22 (standalone components, signals)
+- TypeScript
+- Angular Material / Angular CDK
+- RxJS
+- SCSS
+- Express + Angular SSR (`@angular/ssr`) for server-side rendering
+- [Vitest](https://vitest.dev/) for unit tests
+- Prettier for formatting
+
+## ✨ Features
+
+- **Boards** — create and delete boards from the sidebar, each with its own URL (`/board/:id`)
+- **Tasks** — add tasks to a board with a title, description, and optional due date
+- **Status tracking** — move a task between `todo`, `in_progress`, and `done`
+- **Delete tasks & boards** on the fly
+- **Responsive layout** with a sidebar (boards) and main content area (task list)
+- Server-side rendering (SSR) support via Angular Universal / Express
+
+> **Note:** boards and tasks currently live in memory, there is no persistence yet, I might add localstorage sooner or later.
+
+## 📁 Project structure
+
+```
+src/app/
+├── components/
+│   ├── layout/                    # Header (sidebar) & Body (main content) layout components
+│   ├── board.component.*          # A single board entry in the sidebar
+│   ├── boardCreation.component.*  # Form/modal to create a new board
+│   ├── taskCard.component.*       # A single task card (status, delete, etc.)
+│   ├── taskCreation.component.*   # Form to add a new task to a board
+│   └── modalForm.component.*      # Reusable modal wrapper
+├── models/
+│   ├── board.model.ts
+│   └── task.model.ts
+├── services/
+│   ├── board.service.ts           # Board state (signal-based) & CRUD
+│   └── task.service.ts            # Task creation
+├── app.routes.ts
+└── app.ts
+```
+
+## 🚀 Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- npm (this project pins `packageManager: npm@11.15.0`)
+
+### Installation
+
+```bash
+git clone https://github.com/Sebras22/TodoListAngular.git
+cd TodoListAngular
+npm install
+```
+
+### Development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The app reloads automatically when you edit source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are output to `dist/`.
 
-## Running unit tests
+### Server-side rendering (SSR)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+After building, you can run the Express SSR server:
 
 ```bash
-ng e2e
+npm run serve:ssr:TodoList
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📄 License
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+No license specified yet. All rights reserved by the author unless stated otherwise.
